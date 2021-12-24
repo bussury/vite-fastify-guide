@@ -1,8 +1,21 @@
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vuePlugin from '@vitejs/plugin-vue'
+import {resolve} from 'path';
 
-/**
- * @type {import('vite').UserConfig}
- */
-export default {
-  plugins: [vue()],
-}
+const srcPath = resolve(process.cwd(), 'src');
+const dev = process.env.NODE_ENV !== 'production'
+export default defineConfig({
+    plugins:[
+        vuePlugin(),
+    ],
+    build:{
+        assetsDir: 'assets',
+        outDir: 'dist',
+        minify: !dev,
+    },
+    resolve: {
+        alias: {
+          '@': srcPath,
+        },
+      },
+})

@@ -1,16 +1,15 @@
-import { createApp } from 'vue'
+import { createSSRApp } from 'vue'
 import './assets/main.css'
-import App from './App.vue'
+import App from './Client.vue'
 import { routes } from './routes.js'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 import { createHead } from '@vueuse/head'
 
-let app = createApp(App)
 let router = createRouter({
-  history: createWebHistory(),
+  // history: createWebHistory(),
+  history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
   routes: import.meta.hot ? [] : routes,
 })
-const head = createHead()
 
 if (import.meta.hot) {
   let removeRoutes = []
@@ -29,6 +28,10 @@ if (import.meta.hot) {
   })
 }
 
-app.use(router)
-app.use(head)
-app.mount('#app')
+export function createApp(ctx){
+  const app = createSSRApp(App)
+  const head = createHead()
+  app.use(router)
+  app.use(head)
+  return { ctx, app, head, router }
+}

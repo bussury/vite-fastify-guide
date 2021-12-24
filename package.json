@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "cross-env NODE_ENV=production vite build",
-    "serve": "vite preview"
+    "dev": "node --experimental-json-modules server.mjs",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:server": "vite build --ssr entry/entry-server.js --outDir dist/server",
+    "serve": "cross-env NODE_ENV=production node  --experimental-json-modules server.mjs"
   },
   "dependencies": {
     "@vueuse/head": "^0.7.4",
