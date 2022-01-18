@@ -4,15 +4,27 @@ import {
   createWebHistory
 } from 'vue-router'
 
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-import NotFound from './views/NotFound.vue'
 
 /** @type {import('vue-router').RouterOptions['routes']} */
  let routes = [
-  { path: '/', component: Home, meta: { title: 'Home' } },
-  { path: '/about', component: About, meta: { title: 'About' } },
-  { path: '/:path(.*)', component: NotFound },
+  { path: '/', 
+    component: () => import('@/views/Home.vue'), 
+    meta: { 
+      title: 'Home',
+      layout: 'LayoutClient'
+    } 
+  },
+  { path: '/about', 
+    component: () => import('@/views/About.vue'), 
+    meta: { 
+      title: 'About',
+      layout: 'LayoutClient'
+    } 
+    },
+  { 
+    path: '/:path(.*)', 
+    component: () => import('@/views/NotFound.vue') 
+  },
 ]
 
 export function createRouter() {

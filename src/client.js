@@ -1,6 +1,6 @@
 import { createSSRApp } from 'vue'
 import './assets/main.css'
-import App from './Client.vue'
+import App from './client.vue'
 import { createRouter } from './routes.js'
 import { createHead } from '@vueuse/head'
 
