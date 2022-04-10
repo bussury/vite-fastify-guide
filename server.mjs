@@ -61,6 +61,18 @@ async function main(
       {"name":"Bussury", "age":33, "car":null},
     ])
   })
+  app.get('/api/persons', async (req, res ) => {
+    return res.send(
+      [
+        {'name':'Ally', 'username':'all'},
+        {'name':'Kesi', 'username':'kesi'},
+        {'name':'James', 'username':'james'},
+      ]
+    )
+  })
+
+
+
   app.get('*', async (req, res) =>{
     try {
         // const url = req.originalUrl
