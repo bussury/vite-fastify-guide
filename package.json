@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node  server.mjs",
+    "watch": "nodemon  server.mjs",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr entry/entry-server.js --outDir dist/server",
@@ -24,6 +25,7 @@
     "@vue/compiler-sfc": "^3.2.31",
     "autoprefixer": "^10.4.4",
     "cross-env": "^7.0.3",
+    "nodemon": "^2.0.15",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.23",
     "vite": "^2.9.1"

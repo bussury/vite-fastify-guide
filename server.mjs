@@ -24,7 +24,9 @@ async function main(
       // ssr_manifest
     : {}
   // const app = express()
-  const app = fastify()
+  const app = fastify({
+    logger: false
+  })
   await app.register(middie);
   let vite 
   if (!isProd){
