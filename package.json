@@ -11,9 +11,9 @@
     "serve": "cross-env NODE_ENV=production node  --experimental-json-modules server.mjs"
   },
   "dependencies": {
+    "@fastify/compress": "^5.0.0",
     "@vueuse/head": "^0.7.6",
     "fastify": "^3.28.0",
-    "fastify-compress": "^4.1.0",
     "fastify-static": "^4.7.0",
     "middie": "^6.0.0",
     "serve-static": "^1.15.0",

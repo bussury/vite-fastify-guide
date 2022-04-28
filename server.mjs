@@ -42,7 +42,7 @@ async function main(
     // use vite's connect instance as middleware
     app.use(vite.middlewares)
   } else {
-    app.register(import('fastify-compress'),{ global: false }) 
+    app.register(import('@fastify/compress'),{ global: false }) 
     app.use(serveStatic(resolve('dist/client'),{ index: false }))
   }
   
