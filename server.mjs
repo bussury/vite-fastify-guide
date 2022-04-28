@@ -4,7 +4,6 @@ import fs from 'fs'
 import { readFile } from "fs/promises";
 import path from 'path'
 import serveStatic from 'serve-static';
-import fastifyStatic from 'fastify-static';
 import {createServer } from 'vite'
 
 
@@ -43,20 +42,13 @@ async function main(
     // use vite's connect instance as middleware
     app.use(vite.middlewares)
   } else {
-    // app.use(import('compression'))
-    app.register(
-      import('fastify-compress'),
-      { global: false }
-    ) 
-    // app.register(fastifyStatic,{
-    //   root: resolve('dist/client/assets'),
-    // })
+    app.register(import('fastify-compress'),{ global: false }) 
     app.use(serveStatic(resolve('dist/client'),{ index: false }))
-  
   }
   
-  
-
+  /**
+   * Load all api routes
+   */
   app.get('/api/users', async (req, res) =>{
     return res.send([
       {"name":"John", "age":30, "car":'morano'},
@@ -72,6 +64,7 @@ async function main(
       ]
     )
   })
+
 
 
 
