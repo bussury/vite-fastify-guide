@@ -2,12 +2,13 @@
   "name": "vite-tailwind-starter",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "node  server.mjs",
     "watch": "nodemon  server.mjs",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --ssrManifest --outDir dist/client",
-    "build:server": "vite build --ssr entry/entry-server.js --outDir dist/server",
+    "build:server": "vite build --ssr entry/entry-server.mjs --outDir dist/server",
     "serve": "cross-env NODE_ENV=production node  --experimental-json-modules server.mjs"
   },
   "dependencies": {
