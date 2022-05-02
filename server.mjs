@@ -1,7 +1,7 @@
 import fastify from 'fastify'
 import middie from 'middie';
 
-import viteSSR from './core/ViteSSR.js';
+import viteSSR from './core/ViteSSR.mjs';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD
 

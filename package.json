@@ -2,13 +2,12 @@
   "name": "vite-tailwind-starter",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "node  server.mjs",
     "watch": "nodemon  server.mjs",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --ssrManifest --outDir dist/client",
-    "build:server": "vite build --ssr entry/entry-server.mjs --outDir dist/server",
+    "build:server": "vite build --ssr entry/entry-server.js --outDir dist/server",
     "serve": "cross-env NODE_ENV=production node  --experimental-json-modules server.mjs"
   },
   "dependencies": {
@@ -24,7 +23,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
     "@vue/compiler-sfc": "^3.2.33",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.6",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.16",
     "postcss": "^8.4.13",
