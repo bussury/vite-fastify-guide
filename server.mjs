@@ -1,5 +1,5 @@
 import fastify from 'fastify'
-import middie from 'middie';
+import middiePlugin from '@fastify/middie';
 
 import viteSSR from './core/ViteSSR.mjs';
 
@@ -9,7 +9,7 @@ async function main() {
   const app = fastify({
     logger: false
   })
-  await app.register(middie);
+  await app.register(middiePlugin);
   await app.register(viteSSR)
  /**
    * Load all api routes
@@ -33,7 +33,7 @@ async function main() {
 }
 if (!process.argv.includes('test')) {
   const app = await main()
-  const address = await app.listen(3010)
+  const address = await app.listen({port: 3010})
   console.log(`Listening at ${address}.`)
 }
 
