@@ -11,11 +11,11 @@
     "serve": "cross-env NODE_ENV=production node   server.mjs"
   },
   "dependencies": {
-    "@fastify/compress": "^5.0.0",
+    "@fastify/compress": "^6.0.0",
     "@vueuse/head": "^0.7.6",
-    "fastify": "^3.29.0",
+    "fastify": "^4.0.0",
     "fastify-static": "^4.7.0",
-    "middie": "^6.1.0",
+    "middie": "^7.1.0",
     "serve-static": "^1.15.0",
     "vue": "^3.2.37",
     "vue-router": "^4.0.15"
