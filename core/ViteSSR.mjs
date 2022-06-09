@@ -2,7 +2,8 @@ import fs from 'fs'
 import { readFile } from "fs/promises";
 import path from 'path'
 import {createServer } from 'vite'
-import serveStatic from 'serve-static';
+// import serveStatic from 'serve-static';
+import fastifyStatic from '@fastify/static';
 
 const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD
 
@@ -38,7 +39,8 @@ const  viteSSR = async (app) => {
         app.use(vite.middlewares)
     }else {
         app.register(import('@fastify/compress'),{ global: false }) 
-        app.use(serveStatic(resolve('dist/client'),{ index: false }))
+        app.use(fastifyStatic(resolve('dist/client'),{ index: false }))
+        // app.use(serveStatic(resolve('dist/client'),{ index: false }))
       }
 
     app.get('*', async (req, res) =>{
