@@ -14,10 +14,10 @@
     "@fastify/compress": "^6.0.0",
     "@fastify/middie": "^8.0.0",
     "@vueuse/head": "^0.7.6",
-    "fastify": "^4.0.0",
+    "fastify": "^4.0.1",
     "serve-static": "^1.15.0",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.15"
+    "vue-router": "^4.0.16"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
@@ -26,8 +26,8 @@
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.16",
     "postcss": "^8.4.14",
-    "tailwindcss": "^3.0.24",
-    "vite": "^2.9.10"
+    "tailwindcss": "^3.1.2",
+    "vite": "^2.9.12"
   },
   "resolutions": {
     "postcss": "^8.4.14"
