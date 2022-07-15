@@ -15,6 +15,7 @@ watch(
   () => route.meta?.layout,
   async (metaLayout) => {
     try {
+      console.log('layout:initiated')
       const component =  await import(/* @vite-ignore */ `./App${metaLayout}.vue`)
       layout.value = component?.default || AppLayoutDefault
     } catch (e) {

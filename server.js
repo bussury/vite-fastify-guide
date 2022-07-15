@@ -1,9 +1,7 @@
 import fastify from 'fastify'
 import middiePlugin from '@fastify/middie';
 
-import viteSSR from './core/ViteSSR.mjs';
-
-const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD
+import {viteSSR} from './core/ViteSSR.js';
 
 async function main() {
   const app = fastify({
@@ -11,6 +9,7 @@ async function main() {
   })
   await app.register(middiePlugin);
   await app.register(viteSSR)
+  
  /**
    * Load all api routes
    */

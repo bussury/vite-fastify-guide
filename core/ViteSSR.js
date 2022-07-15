@@ -1,6 +1,7 @@
 import fs from 'fs'
 import { readFile } from "fs/promises";
 import path from 'path'
+import { fileURLToPath } from 'url'
 import {createServer } from 'vite'
 import serveStatic from 'serve-static';
 
@@ -11,13 +12,16 @@ const  viteSSR = async (app) => {
     let root = process.cwd(),
         isProd = process.env.NODE_ENV === 'production'
 
-    const resolve   =   (p) => path.resolve(root, p)
+    const __dirname = path.dirname(fileURLToPath(import.meta.url))
+    const resolve   =   (p) => path.resolve(__dirname, p)
+    // const resolve   =   (p) => path.resolve(root, p)
     const indexProdTemplate =   isProd
           ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8'): ''
 
     const manifest = isProd
           ? // @ts-ignore
-          JSON.parse(await readFile('./dist/client/ssr-manifest.json'))
+          // JSON.parse(await readFile('./dist/client/ssr-manifest.json'))
+          (await import('./dist/client/ssr-manifest.json')).default
             // ssr_manifest
           : {}
 
@@ -32,13 +36,15 @@ const  viteSSR = async (app) => {
         vite = await createServer({
             root,
             logLevel: isTest ? 'error' : 'info',
-            server: {middlewareMode: 'ssr'}
+            server: {middlewareMode: true},
+            // appType: 'custom'
         })
         // use vite's connect instance as middleware
         app.use(vite.middlewares)
     }else {
-        app.register(import('@fastify/compress'),{ global: false }) 
+        app.register((await import('@fastify/compress')).default(),{ global: false }) 
         app.use(serveStatic(resolve('dist/client'),{ index: false }))
+        // app.use((await import('serve-static')).default(resolve('dist/client'),{ index: false }))
       }
 
     app.get('*', async (req, res) =>{
@@ -63,6 +69,7 @@ const  viteSSR = async (app) => {
           } else {
             template = indexProdTemplate
             render = (await import('../dist/server/entry-server.js')).render
+            // render = (await import('../dist/server/entry-server.js')).render
           }
             // 4. render the app HTML. This assumes entry-server.js's exported `render`
             //    function calls appropriate framework SSR APIs,
@@ -87,4 +94,4 @@ const  viteSSR = async (app) => {
     })
 }
 
-export default viteSSR
+export  {viteSSR} 
