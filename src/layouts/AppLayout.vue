@@ -1,10 +1,10 @@
-<template>
-    <component :is="layout"><router-view /></component>
+<template> 
+  <component :is="layout"><router-view /></component>
 </template>
 
 <script setup>
 import AppLayoutDefault from './AppLayoutDefault.vue'
-import {watch, markRaw, ref } from 'vue'
+import {watch, markRaw, ref, shallowRef } from 'vue'
 import { useRoute } from 'vue-router'
 
 
