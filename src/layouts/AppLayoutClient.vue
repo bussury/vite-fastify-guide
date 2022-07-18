@@ -1,5 +1,4 @@
 <template>
-  <div>
     <nav class="bg-gray-800">
       <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -193,7 +192,6 @@
     <div class="max-w-screen-xl py-6 mx-auto sm:px-6 lg:px-8">
       <slot></slot>
     </div>
-  </div>
 </template>
 
 <script>
