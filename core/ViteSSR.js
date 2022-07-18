@@ -11,11 +11,12 @@ const  viteSSR = async (app) => {
     let root = process.cwd(),
         isProd = process.env.NODE_ENV === 'production'
 
-        const __dirname = path.dirname(fileURLToPath(import.meta.url))
-    const resolve = (p) => path.resolve(__dirname, p)
-    // const resolve   =   (p) => path.resolve(root, p)
+    // const __dirname = path.dirname(fileURLToPath(import.meta.url))
+    // const resolve = (p) => path.resolve(__dirname, p)
+
+    const resolve   =   (p) => path.resolve(root, p)
     const indexProdTemplate =   isProd
-          ? fs.readFileSync(resolve('../dist/client/index.html'), 'utf-8'): ''
+          ? fs.readFileSync(resolve('dist/client/index.html'), 'utf-8'): ''
 
     const manifest = isProd
           ? // @ts-ignore
