@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import postcss from './postcss.config.js';
+// import postcss from './postcss.config.js';
 import vuePlugin from '@vitejs/plugin-vue'
 import {resolve} from 'path';
 
@@ -19,7 +19,7 @@ export default defineConfig({
           '@': srcPath,
         },
    },
-   css:{
-    postcss
-  }
+  //  css:{
+  //   postcss
+  // }
 })
