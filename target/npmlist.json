@@ -1,1 +1,0 @@
-{"version":"0.0.0","name":"vite-tailwind-starter","dependencies":{"@fastify/compress":{"version":"5.0.0"},"@vueuse/head":{"version":"0.7.6"},"fastify-static":{"version":"4.7.0"},"fastify":{"version":"3.29.0"},"middie":{"version":"6.1.0"},"serve-static":{"version":"1.15.0"},"vue-router":{"version":"4.0.15"},"vue":{"version":"3.2.34"}}}
