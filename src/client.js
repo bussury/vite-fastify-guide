@@ -1,7 +1,8 @@
 import { createSSRApp } from 'vue'
 import './assets/main.css'
 import App from './client.vue'
-import { createRouter } from './routes.js'
+import { createRouter, createWebHistory, createMemoryHistory, } from 'vue-router'
+import { routes } from './routes.js'
 import { createHead } from '@vueuse/head'
 
 
@@ -11,13 +12,39 @@ import { createHead } from '@vueuse/head'
 export  function createApp(ctx, url){
   const app = createSSRApp(App)
   const head = createHead()
-  const router =  createRouter()
+  // const router =  createRouter()
+
+
+  let router = createRouter({
+    // use appropriate history implementation for server/client
+    // import.meta.env.SSR is injected by Vite.
+    history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
+    routes: import.meta.hot ? [] : routes,
+  })
+  if (import.meta.hot) {
+    let removeRoutes = []
+  
+    for (let route of routes) {
+      removeRoutes.push(router.addRoute(route))
+    }
+  
+    import.meta.hot.accept('./routes.js', ({ routes }) => {
+      for (let removeRoute of removeRoutes) removeRoute()
+      removeRoutes = []
+      for (let route of routes) {
+        removeRoutes.push(router.addRoute(route))
+      }
+      router.replace('')
+    })
+  }
+
+
   app.use(router)
   app.use(head)
 
-  if (url) {
-    router.push(url)
-     router.isReady()
-  }
+  // if (url) {
+  //   router.push(url)
+  //    router.isReady()
+  // }
   return { ctx, app, head, router }
 }
