@@ -14,8 +14,8 @@
   "dependencies": {
     "@fastify/compress": "^6.1.0",
     "@fastify/middie": "^8.0.0",
-    "@vueuse/head": "^0.7.6",
-    "fastify": "^4.2.1",
+    "@vueuse/head": "^0.7.7",
+    "fastify": "^4.3.0",
     "serve-static": "^1.15.0",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2"
