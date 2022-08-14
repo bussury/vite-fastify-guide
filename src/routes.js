@@ -5,19 +5,22 @@
     component: () => import('@/views/Home.vue'), 
     meta: { 
       title: 'Home',
-      layout: 'LayoutClient'
+      layout: 'Client'
     } 
   },
   { path: '/about', 
     component: () => import('@/views/About.vue'), 
     meta: { 
       title: 'About',
-      layout: 'LayoutClient'
+      layout: 'Client'
     } 
     },
   { 
     path: '/:path(.*)', 
-    component: () => import('@/views/NotFound.vue') 
+    component: () => import('@/views/NotFound.vue'),
+     meta: { 
+      title: 'not found',
+    } 
   },
 ]
 
