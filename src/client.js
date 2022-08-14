@@ -42,9 +42,9 @@ export  function createApp(ctx, url){
   app.use(router)
   app.use(head)
 
-  // if (url) {
-  //   router.push(url)
-  //    router.isReady()
-  // }
+  if (url) {
+    router.push(url)
+     router.isReady()
+  }
   return { ctx, app, head, router }
 }
