@@ -1,24 +1,23 @@
 <template> 
-  <component :is="layout"><router-view /></component>
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
 
 <script setup>
-import AppLayoutDefault from './AppLayoutDefault.vue'
+import AppLayoutDefault from '@/layouts/DefaultLayout.vue'
 import {watch, markRaw, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-
 const layout = ref()
-
 const route = useRoute()
+
 watch(
   () => route.meta?.layout,
   async (metaLayout) => {
-    try {
-      if(!!metaLayout)
-      var component = metaLayout && await import(/* @vite-ignore */`./App${metaLayout}.vue`)
-      layout.value = markRaw(component?.default || AppLayoutDefault)
-    } catch (e) {
+    if (metaLayout) {
+      layout.value = markRaw((await import(/* @vite-ignore */`./${metaLayout}Layout.vue`))?.default)
+    } else {
       layout.value = markRaw(AppLayoutDefault)
     }
   },
