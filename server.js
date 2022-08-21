@@ -1,11 +1,29 @@
 import fastify from 'fastify'
 import middiePlugin from '@fastify/middie';
+import fastifyEnv from '@fastify/env';
 
 import {viteSSR} from './core/ViteSSR.js';
+
+const schema = {
+  type: 'object',
+  required: [ 'PORT' ],
+  properties: {
+    PORT: {
+      type: 'string',
+      default: 3000
+    }
+  }
+}
+
 
 async function main() {
   const app = fastify({
     logger: false
+  })
+  await app.register(fastifyEnv,{
+    configKey: 'config',
+    schema  : schema ,
+    dotenv: true, 
   })
   await app.register(middiePlugin);
   await app.register(viteSSR)
