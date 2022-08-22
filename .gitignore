@@ -1,4 +1,9 @@
+.DS_Store
 node_modules
 yarn-error.log
-dist
+dist/
+package-lock.json
+.idea
+.vscode
 .env
+.env.backup
