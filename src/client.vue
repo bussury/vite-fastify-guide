@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import AppLayout from '@/layouts/AppLayout.vue'
+import AppLayout from '@/AppLayout.vue';
 </script>

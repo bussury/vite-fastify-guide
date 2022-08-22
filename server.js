@@ -26,7 +26,11 @@ async function main() {
     dotenv: true, 
   })
   await app.register(middiePlugin);
-  await app.register(viteSSR)
+  await app.register(viteSSR,{
+    root: process.cwd(),
+    isProd: process.env.NODE_ENV === 'production',
+    hmrPort: 3001,
+  })
   
  /**
    * Load all api routes

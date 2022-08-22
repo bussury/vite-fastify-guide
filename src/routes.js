@@ -5,14 +5,14 @@
     component: () => import('@/views/Home.vue'), 
     meta: { 
       title: 'Home',
-      layout: 'Client'
+      layout: 'ClientLayout'
     } 
   },
   { path: '/about', 
     component: () => import('@/views/About.vue'), 
     meta: { 
       title: 'About',
-      layout: 'Client'
+      layout: 'ClientLayout'
     } 
     },
   { 
@@ -23,12 +23,3 @@
     } 
   },
 ]
-
-// export function createRouter() {
-//   return _createRouter({
-//     // use appropriate history implementation for server/client
-//     // import.meta.env.SSR is injected by Vite.
-//     history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
-//     routes
-//   })
-// }

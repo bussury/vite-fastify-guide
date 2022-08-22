@@ -9,7 +9,7 @@ import { createHead } from '@vueuse/head'
 // SSR requires a fresh app instance per request, therefore we export a function
 // that creates a fresh app instance. If using Vuex, we'd also be creating a
 // fresh store here.
-export  function createApp(ctx, url){
+export  function createApp(){
   const app = createSSRApp(App)
   const head = createHead()
   // const router =  createRouter()
@@ -19,32 +19,33 @@ export  function createApp(ctx, url){
     // use appropriate history implementation for server/client
     // import.meta.env.SSR is injected by Vite.
     history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
-    routes: import.meta.hot ? [] : routes,
+    routes: routes,
+    // routes: import.meta.hot ? [] : routes,
   })
-  if (import.meta.hot) {
-    let removeRoutes = []
+  // if (import.meta.hot) {
+  //   let removeRoutes = []
   
-    for (let route of routes) {
-      removeRoutes.push(router.addRoute(route))
-    }
+  //   for (let route of routes) {
+  //     removeRoutes.push(router.addRoute(route))
+  //   }
   
-    import.meta.hot.accept('./routes.js', ({ routes }) => {
-      for (let removeRoute of removeRoutes) removeRoute()
-      removeRoutes = []
-      for (let route of routes) {
-        removeRoutes.push(router.addRoute(route))
-      }
-      router.replace('')
-    })
-  }
+  //   import.meta.hot.accept('./routes.js', ({ routes }) => {
+  //     for (let removeRoute of removeRoutes) removeRoute()
+  //     removeRoutes = []
+  //     for (let route of routes) {
+  //       removeRoutes.push(router.addRoute(route))
+  //     }
+  //     router.replace('')
+  //   })
+  // }
 
 
   app.use(router)
   app.use(head)
 
-  if (url) {
-    router.push(url)
-     router.isReady()
-  }
-  return { ctx, app, head, router }
+  // if (url) {
+  //   router.push(url)
+  //    router.isReady()
+  // }
+  return {app, head, router }
 }
