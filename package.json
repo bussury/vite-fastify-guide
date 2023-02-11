@@ -16,21 +16,21 @@
     "@fastify/env": "^4.2.0",
     "@fastify/middie": "^8.1.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
-    "@vueuse/head": "^1.0.22",
-    "fastify": "^4.11.0",
+    "@vueuse/head": "^1.0.25",
+    "fastify": "^4.13.0",
     "serve-static": "^1.15.0",
-    "vue": "^3.2.45",
+    "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vue/compiler-sfc": "^3.2.45",
+    "@vue/compiler-sfc": "^3.2.47",
     "autoprefixer": "^10.4.13",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.20",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.4",
-    "vite": "^4.0.4"
+    "tailwindcss": "^3.2.6",
+    "vite": "^4.1.1"
   },
   "resolutions": {
     "postcss": "^8.4.19"
