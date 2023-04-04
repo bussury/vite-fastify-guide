@@ -12,12 +12,12 @@
     "serve": "cross-env NODE_ENV=production node   server.js"
   },
   "dependencies": {
-    "@fastify/compress": "^6.2.0",
+    "@fastify/compress": "^6.2.1",
     "@fastify/env": "^4.2.0",
     "@fastify/middie": "^8.1.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vueuse/head": "^1.1.23",
-    "fastify": "^4.14.1",
+    "fastify": "^4.15.0",
     "serve-static": "^1.15.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
@@ -27,10 +27,10 @@
     "@vue/compiler-sfc": "^3.2.47",
     "autoprefixer": "^10.4.14",
     "cross-env": "^7.0.3",
-    "nodemon": "^2.0.21",
+    "nodemon": "^2.0.22",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.7",
-    "vite": "^4.2.0"
+    "tailwindcss": "^3.3.1",
+    "vite": "^4.2.1"
   },
   "resolutions": {
     "postcss": "^8.4.19"
