@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
-// import postcss from './postcss.config.js';
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vuePlugin from '@vitejs/plugin-vue'
+import tailwindcss from '@tailwindcss/vite'
 import {resolve} from 'path';
 
 const srcPath = resolve(process.cwd(), 'src');
@@ -10,6 +10,7 @@ export default defineConfig({
     plugins:[
         vuePlugin(),
         vueJsx(),
+        tailwindcss(),
     ],
     build:{
         assetsDir: 'assets',
